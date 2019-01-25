@@ -2,8 +2,8 @@
   "name": "lambda-notes",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://marguelgtz.github.io/front-end-project-week/",
   "dependencies": {
-    "add": "^2.0.6",
     "axios": "^0.18.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -15,10 +15,11 @@
     "react-switch": "^3.0.4",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
-    "yarn": "^1.12.3"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "predeploy" : "yarn run build",
+    "deploy" : "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -32,5 +33,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
 }

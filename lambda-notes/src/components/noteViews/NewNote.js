@@ -36,21 +36,22 @@ class NewNote extends React.Component {
       <div className="new-note-form">
         <h2>Add new Note</h2>
         <div className="form-container">
-          <form>
+          <div className="new-form">
             <input 
               type="text"
               placeholder="Title"
               name="title"
               value={this.state.title}
               onChange={this.inputHadler} />
-            <input 
+            <textarea 
+              className="new-body-input"
               type="text"
               placeholder="Write Your note Here"
               name="textBody"
               value={this.state.textBody}
               onChange={this.inputHadler} />
               <button onClick={this.addNoteHandler}>Add New Note</button>
-          </form>
+          </div>
         </div>
       </div>
     );

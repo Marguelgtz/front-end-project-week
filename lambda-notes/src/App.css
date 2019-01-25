@@ -1,6 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 .App{
   display: flex;
+  width: 100%;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Side Nav Bar */
+
+.nav-main-container{
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border: 1px solid black;
+  width: 15%;
+  background-color: #b7b5b4;
+}
+.nav-header-container{
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.nav-header-container h2{
+  font-size: 30px;
+  font-weight: bolder;
+}
+.buttons-search-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.buttons-search-container a{
+  text-decoration: none;
+}
+.nav-button{
+  background-color: #30BBBF;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px 0 5px 0;
+  width: 170px;
+  color: black;
+  text-decoration: none;
+  font-size: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.search-container input{
+  height: 30px;
+  width: 170px;
+  font-size: 25px;;
+  text-align: center;
+  color: gray;
+}
+/* Note List */
+.list-main-container{
+  border: 1px solid black;
+  
+  overflow: scroll;
+  top: 0;
+  background-color: #EBECEC;
+  width: 100%
+}
+
+.list-header-container{
+  border-bottom: 1px solid black;
+  background-color: white;
+  position: fixed;
+  top: 1;
+  width: 85%;
+  text-align: center;
+}
+
+.list-body-container{
+  padding: 100px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  overflow-y: scroll;
 }
 
 
+/* Note Card */
+
+.card-main-container{
+  background-color: white;
+  border: 1px solid black;
+  height: 180px;
+  width: 30%;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+.card-header-container{
+  border-bottom: 1px solid black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+.card-header-container p{
+  color: black;
+  text-decoration: none;
+}
+
+.card-body-container{
+  overflow-y: scroll;
+}
 

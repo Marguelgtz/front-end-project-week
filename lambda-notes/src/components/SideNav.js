@@ -14,18 +14,17 @@ class SideNav extends Component {
   render() { 
     return (
       <div className="nav-main-container">
-        <div className="header-container">
+        <div className="nav-header-container">
           <h2>NOTES APP</h2>
           <i className="fas fa-arrow-left"></i>
         </div>
         <div className="buttons-search-container">
           <Link to="/">
-            <div className="view-button">View Notes</div>
+            <div className="nav-button">View Notes</div>
           </Link>
           <Link to="/new">
-            <div className="new-button">New Note +</div>
+            <div className="nav-button">New Note +</div>
           </Link>
-        </div>
         <div className="search-container">
           <input 
             type="text"
@@ -33,6 +32,7 @@ class SideNav extends Component {
             className="search-imput"
             value={this.props.searchValue}
             onChange={this.searchChangeHandler} />
+        </div>
         </div>
       </div>
     );

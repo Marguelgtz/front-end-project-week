@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {editNote, getNote} from '../../actions';
+import Switch from 'react-switch';
+import MarkdownPreview from '../MarkdownPreview';
+
 
 class Note extends React.Component {
   constructor(){
@@ -8,7 +11,10 @@ class Note extends React.Component {
     this.state = {
       title: null,
       textBody: null,
+      checked: false,
     }
+    
+    this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount(){
     this.props.getNote(this.props.match.params.id);
@@ -20,6 +26,12 @@ class Note extends React.Component {
         textBody: this.props.note.textBody,
       })
     }, 300);
+  }
+ 
+
+  handleChange = checked => {
+    this.forceUpdate();
+    this.setState({checked})
   }
 
   editNoteHandler= e => {
@@ -39,35 +51,57 @@ class Note extends React.Component {
 
   render(){
 
-
-    
-    // if (this.state._id !== this.props.match.params.id) {
-    //   return (
-    //     <div className="wait">
-    //       <h2>Loading Editor...</h2>
-    //     </div>
-    //   )
-    // } 
     return(
     
       <div className="edit-note-form">
-      <h2>Edit Note</h2>
+        <div className="edit-note-header">
+          <h2>Edit Note</h2>
+          <p>Switch to markdown live editor</p>
+          <Switch 
+            onChange={this.handleChange}
+            checked={this.state.checked} />
+        </div>
       <div className="edit-form-container">
         <form>
-          <input 
-            type="text"
-            name="title"
-            value={this.state.title}
-            onChange={this.inputHandler}
-            />
-          <input 
-            type="text"
-            name="textBody"
-            value={this.state.textBody}
-            onChange={this.inputHandler}
-            />
+          <div className="edit-title">
+            <input 
+              type="text"
+              name="title"
+              value={this.state.title}
+              onChange={this.inputHandler}
+              />
+          </div>
+          {/* Normal text editor */}
+          <div className="edit-body">
+            <input 
+              type="text"
+              name="textBody"
+              value={this.state.textBody}
+              onChange={this.inputHandler}
+              />
+          </div>
+          {/* Live Markdown Editor */}
+          <div className="markdown-edit-body">
+            <div className="edit-window">
+            <input 
+              type="text"
+              name="textBody"
+              value={this.state.textBody}
+              onChange={this.inputHandler}
+              />
+            </div>
+            <div className="preview-window">
+              {/* need preview window to update on state change 
+                possible fixes 
+                  - renderers-nope
+                  - componentWillUpdate
+                  - calling render on ReactMarkdown on state change*/}
+              
+              <MarkdownPreview 
+                noteBody={this.state.textBody} />
+            </div>
+          </div>
           <button onClick={this.editNoteHandler}>Submit</button>
-
         </form>
       </div>
     </div>

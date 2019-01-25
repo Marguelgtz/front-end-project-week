@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
     case FETCHING_NOTE:
       return {...state, fetchingNote: true,}
     case GET_NOTE:
-      return {...state, note: action.payload, fetchingNote: false,}
+      return {...state, note: action.payload, fetchingNote: false, fetchingNotes: false}
     case ADDING:
       return {...state, savingNote: true}
     case ADDED:
