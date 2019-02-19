@@ -77,7 +77,7 @@ export const editNote = (id, note) => dispatch => {
 export const deleteNote = id => dispatch => {
   dispatch({type: FETCHING});
   axios 
-    .delete(`https://fe-notes.herokuapp.com/note/delete/${id}`)
+    .delete(`http://localhost:3300/notes/${id}`)
     .then(()=> fetchNotes()(dispatch))
     .catch(err => {
       dispatch({type: ERROR, payload: err})
