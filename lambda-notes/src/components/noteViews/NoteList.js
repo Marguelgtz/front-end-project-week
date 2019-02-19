@@ -8,8 +8,6 @@ import './NoteList.css';
 
 class NoteList extends Component {
 
-
-  
   render() { 
     let notes = this.props.notes;
     return (
@@ -19,12 +17,12 @@ class NoteList extends Component {
         </div>
         <div className="list-body-container">
           {this.props.loading ? <h1>Loading Note List</h1> : null}
-          {this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
+          {/* {this.props.error !== '' ? <h1>{this.props.error}</h1> : null } */}
           {notes.map(note => {
             return (
               <NoteCard
                 key={Math.random()}
-                id={note._id}
+                id={note.id}
                 title={note.title}
                 textBody={note.textBody} 
               />

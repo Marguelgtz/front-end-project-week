@@ -14,8 +14,9 @@ export const NOTE_UPDATED = "NOTE_UPDATED";
 export const fetchNotes = () => dispatch => {
   dispatch({type: FETCHING});
   axios 
-    .get("https://fe-notes.herokuapp.com/note/get/all")
+    .get("http://localhost:3300/notes")
     .then(response => {
+      console.log(response)
       dispatch({
         type: GET_NOTES,
         payload: response.data,
@@ -35,7 +36,7 @@ export const fetchNotes = () => dispatch => {
 export const addNote = note => dispatch => {
   dispatch({type: ADDING})
     axios 
-      .post("https://fe-notes.herokuapp.com/note/create", note)
+      .post("http://localhost:3300/notes", note)
       .then(() => fetchNotes()(dispatch))
       .catch(err => {
         dispatch({
@@ -50,7 +51,7 @@ export const addNote = note => dispatch => {
 export const getNote = id => dispatch => {
   dispatch({type: FETCHING_NOTE});
   axios
-    .get(`https://fe-notes.herokuapp.com/note/get/${id}`)
+    .get(`http://localhost:3300/notes/${id}`)
     .then(response => {
       dispatch({type: GET_NOTE, payload: response.data})
     })
@@ -64,7 +65,7 @@ export const getNote = id => dispatch => {
 export const editNote = (id, note) => dispatch => {
   dispatch({type: NOTE_UPDATING});
   axios 
-    .put(`https://fe-notes.herokuapp.com/note/edit/${id}`, note)
+    .put(`http://localhost:3300/notes/${id}`, note)
     .then(() => fetchNotes()(dispatch))
     .catch(err => {
       dispatch({type: ERROR, payload: err})

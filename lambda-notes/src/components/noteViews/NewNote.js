@@ -7,7 +7,6 @@ class NewNote extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tags: [],
       title: '',
       textBody: ''
     }

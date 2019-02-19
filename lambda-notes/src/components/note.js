@@ -10,6 +10,7 @@ class Note extends React.Component {
   constructor(){
     super();
     this.state = {
+      id: null,
       title: null,
       textBody: null,
       checked: false,
@@ -41,17 +42,10 @@ class Note extends React.Component {
       this.setState({
         title: this.props.note.title,
         textBody: this.props.note.textBody,
-        id: this.props.note._id,
+        id: this.props.note.id,
       })
-    }, 600);
+    }, 500);
   
-    if (this.state.id !== this.props.match.params.id) {
-      return (
-        <div className="wait">
-          <h2>Loading Note...</h2>
-        </div>
-      )
-    } 
 
     const markdownInput = this.state.textBody;
 
@@ -59,6 +53,8 @@ class Note extends React.Component {
     
     <div className="note-container">
     {/* Need to find a way to get title and textbody from mapStateToProps via props from state --- fixed*/}
+    {this.props.loading ? <h2>Loading Note...</h2> : null}
+
       <div className="note-header">
       <h2>{this.state.title}</h2>
       <Link to={`/note/edit/${this.state.id}`}><button>Update</button></Link>
@@ -84,6 +80,7 @@ class Note extends React.Component {
 
 const mapStateToProps = state => ({
   note: state.note,
+  loading: state.fetchingNote,
 })
 
 export default connect(mapStateToProps, {getNote, deleteNote})(Note);
