@@ -11,7 +11,8 @@ class Note extends React.Component {
     this.state = {
       title: null,
       textBody: null,
-      checked: false,
+      // api only accepts the title and body / nested note object only sends the last updated so is also not accepted by the api
+      // checked: false,
     }
     
     this.handleChange = this.handleChange.bind(this);
@@ -27,7 +28,7 @@ class Note extends React.Component {
       })
     }, 300);
   }
- 
+
 
   handleChange = checked => {
     this.forceUpdate();
@@ -41,7 +42,6 @@ class Note extends React.Component {
     this.props.history.push("/");
   }
   
-
   inputHandler = e => {
     console.log(this.state)
     this.setState({
