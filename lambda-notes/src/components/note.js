@@ -30,7 +30,7 @@ class Note extends React.Component {
   handleChange = checked => {
     this.setState({checked})
   }
-
+  // delete works
   deleteHandler = () => {
     this.props.deleteNote(this.props.match.params.id)
     this.props.history.push("/")
