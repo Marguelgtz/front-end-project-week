@@ -5,6 +5,10 @@ import {
   GET_NOTE,
   ADDING,
   ADDED,
+  REGISTERING,
+  REGISTER,
+  LOGIN_IN,
+  LOGIN,
   ERROR} from '../actions';
 
 const initialState = {
@@ -14,6 +18,8 @@ const initialState = {
   fetchingNote: false,
   savingNote: false,
   updatingNote: false,
+  securingPass: false,
+  userInfo: null, 
   error: null,
 }
 
@@ -33,6 +39,14 @@ export default (state = initialState, action) => {
       return {...state, savingNote: false};
     case ERROR:
       return {...state, error: action.payload}
+    case REGISTERING: 
+      return {...state, securingPass: true}
+    case REGISTER: 
+      return {...state, userInfo: action.payload, securingPass: false}
+    case LOGIN_IN:
+      return {...state, securingPass: true}
+    case LOGIN:
+      return {...state, userInfo: action.payload, securingPass: false}
     default:
       return state;
   }
