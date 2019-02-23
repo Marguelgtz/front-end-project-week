@@ -9,6 +9,51 @@ export const ADDED = "ADDED";
 export const ERROR = "ERROR";
 export const NOTE_UPDATING = 'NOTE_UPDATING';
 export const NOTE_UPDATED = "NOTE_UPDATED";
+export const REGISTERING = "REGISTERING";
+export const REGISTER = "REGISTER";
+export const LOGIN_IN = "LOGIN_IN"
+export const LOGIN  = "LOGIN"
+
+
+//AUTH 
+export const register = creds => dispatch => {
+  dispatch({type: REGISTERING})
+  axios 
+    .post("http://localhost:3300/auth/register")
+    .then(response => {
+      // JWT gets return here from back end
+      dispatch({
+        type: REGISTER,
+        payload: response.data
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err
+      })
+    })
+}
+
+export const login = creds => dispatch => {
+  dispatch({type: LOGIN_IN})
+  axios 
+    .post("http://localhost:3300/auth/Login")
+    .then(response => {
+      //JWT gets sendt from back end when successful
+      dispatch({
+        type: LOGIN,
+        payload: response.data
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err
+      })
+    })
+}
+
 
 //Fetching notes
 export const fetchNotes = () => dispatch => {
