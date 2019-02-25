@@ -19,9 +19,12 @@ export const LOGIN  = "LOGIN"
 export const register = creds => dispatch => {
   dispatch({type: REGISTERING})
   axios 
-    .post("http://localhost:3300/auth/register")
+    .post("http://localhost:3300/auth/register", creds)
     .then(response => {
       // JWT gets return here from back end
+      //get token 
+      const {token} = response.data
+      localStorage.setItem('jwt', token)
       dispatch({
         type: REGISTER,
         payload: response.data
@@ -38,9 +41,11 @@ export const register = creds => dispatch => {
 export const login = creds => dispatch => {
   dispatch({type: LOGIN_IN})
   axios 
-    .post("http://localhost:3300/auth/Login")
+    .post("http://localhost:3300/auth/Login", creds)
     .then(response => {
       //JWT gets sendt from back end when successful
+      const {token} = response.data
+      localStorage.setItem('jwt', token)
       dispatch({
         type: LOGIN,
         payload: response.data

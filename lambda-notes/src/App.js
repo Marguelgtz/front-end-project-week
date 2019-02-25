@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {fetchNotes} from './actions'
+import {fetchNotes, register} from './actions'
 import {HashRouter as Router} from 'react-router-dom';
 
 import './App.css';
@@ -10,6 +10,7 @@ import SideNav from './components/SideNav';
 import NewNote from './components/noteViews/NewNote';
 import Note from './components/note'
 import NoteEdit from './components/noteViews/NoteEdit'
+import Register from './auth/Register'
 
 class App extends Component {
   constructor(){
@@ -41,14 +42,13 @@ class App extends Component {
         <SideNav className="nav-component" 
           searchValue={this.state.searchValue}
           filter={this.filterHandler}/>
-
+        {/* register and login components here wor testing for now */}
+        <Register/>
         <Switch>
           <Route exact path='/' render={() =>   <NoteList notes=  {this.state.filteredNotes.length > 0 ?  this.state.filteredNotes : this.props.notes} />}/>
           <Route path='/new' component={NewNote}/>
-          <Route exact path='/note/:id' component=  {Note}/>
+          <Route exact path='/note/:id' component={Note}/>
           <Route exact path='/note/edit/:id'  component={NoteEdit}/>
-
-
         </Switch>
         {/* <NewNote/> */}
         </div>
