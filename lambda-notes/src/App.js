@@ -11,6 +11,7 @@ import NewNote from './components/noteViews/NewNote';
 import Note from './components/note'
 import NoteEdit from './components/noteViews/NoteEdit'
 import Register from './auth/Register'
+import Login from './auth/Login'
 
 class App extends Component {
   constructor(){
@@ -44,6 +45,7 @@ class App extends Component {
           filter={this.filterHandler}/>
         {/* register and login components here wor testing for now */}
         <Register/>
+        <Login/>
         <Switch>
           <Route exact path='/' render={() =>   <NoteList notes=  {this.state.filteredNotes.length > 0 ?  this.state.filteredNotes : this.props.notes} />}/>
           <Route path='/new' component={NewNote}/>
