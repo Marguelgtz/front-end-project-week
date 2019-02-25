@@ -25,6 +25,12 @@ class SideNav extends Component {
           <Link to="/new">
             <div className="nav-button">New Note +</div>
           </Link>
+          <Link to="/register">
+            <div className="nav-button">Register</div>
+          </Link>
+          <Link to="/login">
+            <div className="nav-button">Login</div>
+          </Link>
         <div className="search-container">
           <input 
             type="text"
